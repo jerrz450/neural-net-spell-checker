@@ -63,7 +63,7 @@ def main():
     save_path = os.path.join(save_dir, model_name)
 
     torch.save(checkpoint, save_path)
-    print(f"\n✓ Model saved to: {save_path}")
+    print(f"\n Model saved to: {save_path}")
 
     test_words = [
         ("hello", "correct"),
@@ -90,12 +90,24 @@ def main():
         is_correct = (prediction.lower() == expected)
         correct += is_correct
 
-        status = "✓" if is_correct else "✗"
-        print(f"{word:<20} | {expected:<10} | {prob:>12.4f} | {prediction:<10} {status}")
+        print(f"{word:<20} | {expected:<10} | {prob:>12.4f} | {prediction:<10}`")
 
     print("-"*70)
     print(f"Accuracy: {correct}/{len(test_words)} = {100*correct/len(test_words):.1f}%")
     print("="*70)
 
 if __name__ == "__main__":
-    main()
+
+    from predict import TypoDetector
+
+    mode = 'predict'
+
+    if mode  == "train":
+        main()
+    
+    if mode == 'predict':
+
+        checkpoint_path = r"spellchecker_models\lstm_brown_typo_detector.pt"
+        typo_model = TypoDetector(checkpoint_path)
+        predicted  = typo_model.is_typo('her')
+        print(predicted)

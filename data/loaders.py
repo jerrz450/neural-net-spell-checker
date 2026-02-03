@@ -41,6 +41,7 @@ def load_brown_corpus(max_samples=50000):
 
                     if len(typo_pairs) >= max_samples:
                         break 
+
         return typo_pairs
 
     except ImportError:
@@ -67,6 +68,7 @@ def extract_word_typos(src_text, tgt_text):
     return typos
 
 def load_github_typo_corpus(file_path, max_edits=50000):
+
     typo_pairs = []
     seen = set()
 
