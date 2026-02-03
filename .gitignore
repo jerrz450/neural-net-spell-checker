@@ -1,0 +1,6 @@
+*.jsonl
+*.pt
+*.ipynb
+__pycache__/
+*.pyc
+spellchecker_models/
