@@ -109,5 +109,5 @@ if __name__ == "__main__":
 
         checkpoint_path = r"spellchecker_models\lstm_brown_typo_detector.pt"
         typo_model = TypoDetector(checkpoint_path)
-        predicted  = typo_model.is_typo('her')
+        predicted  = typo_model.is_typo('the')
         print(predicted)
